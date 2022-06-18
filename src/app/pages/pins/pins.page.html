@@ -4,9 +4,9 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content class="background-image bg-danger">
+<ion-content class="background-image ">
   <div *ngFor="let pin of pins">
     <app-pin [pin]="pin"></app-pin>
   </div>
-
+  <app-add-pin-btn class="position-absolute top-50 start-50 translate-middle"></app-add-pin-btn>
 </ion-content>
