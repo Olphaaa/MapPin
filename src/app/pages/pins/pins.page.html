@@ -1,9 +1,12 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>pins</ion-title>
+    <ion-title>Pins</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-  <app-pin></app-pin>
+<ion-content class="background-image bg-danger">
+  <div *ngFor="let pin of pins">
+    <app-pin [pin]="pin"></app-pin>
+  </div>
+
 </ion-content>

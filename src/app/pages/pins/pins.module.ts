@@ -8,6 +8,7 @@ import { PinsPageRoutingModule } from './pins-routing.module';
 
 import { PinsPage } from './pins.page';
 import {PinComponent} from '../../components/pin/pin.component';
+import {AddPinBtnComponent} from '../../components/add-pin-btn/add-pin-btn.component';
 
 @NgModule({
   imports: [
@@ -16,6 +17,6 @@ import {PinComponent} from '../../components/pin/pin.component';
     IonicModule,
     PinsPageRoutingModule
   ],
-    declarations: [PinsPage, PinComponent]
+  declarations: [PinsPage, PinComponent, AddPinBtnComponent]
 })
 export class PinsPageModule {}

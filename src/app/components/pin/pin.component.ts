@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import Pin from '../../@entities/Pin';
 
 @Component({
   selector: 'app-pin',
@@ -7,8 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PinComponent implements OnInit {
 
+  @Input() pin: Pin;
+
   constructor() { }
 
-  ngOnInit() {}
+  ngOnInit() {
+    console.log(this.pin);
+  }
 
 }
