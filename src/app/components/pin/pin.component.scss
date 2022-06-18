@@ -1,15 +1,12 @@
 @import "src/theme/colorPalette";
 
-.circle {
-  border-radius: 50%;
-  background: $mappin-primary;
-  width: 100px;
-}
-
 .dot {
   background: $mappin-primary;
   width: 100px;
   height: 100px;
   vertical-align: middle;
   top: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

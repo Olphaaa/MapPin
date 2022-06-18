@@ -11,12 +11,15 @@ import {PinComponent} from '../../components/pin/pin.component';
 import {AddPinBtnComponent} from '../../components/add-pin-btn/add-pin-btn.component';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    FormsModule,
-    IonicModule,
-    PinsPageRoutingModule
-  ],
-  declarations: [PinsPage, PinComponent, AddPinBtnComponent]
+    imports: [
+        CommonModule,
+        FormsModule,
+        IonicModule,
+        PinsPageRoutingModule
+    ],
+    exports: [
+        AddPinBtnComponent
+    ],
+    declarations: [PinsPage, PinComponent, AddPinBtnComponent]
 })
 export class PinsPageModule {}
