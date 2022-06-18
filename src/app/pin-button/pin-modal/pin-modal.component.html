@@ -1,0 +1,16 @@
+<div id="pin-modal">
+  <div class="title">
+      Ajouter un pin
+  </div>
+  <div class="category-container">
+    <div class="category" *ngFor="let category of categories">
+      <div class="image">
+        <img src="{{category.image}}"/>
+      </div>
+      <div class="name">
+        {{category.name}}
+      </div>
+      
+    </div>
+  </div>
+</div>

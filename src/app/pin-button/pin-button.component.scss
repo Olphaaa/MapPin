@@ -1,0 +1,22 @@
+#pin-button {
+    background-color: #f0f0f09f;
+    border-radius:  150px;
+    position: absolute;
+
+    width: 85px;
+    height: 85px;
+
+    bottom: 20px;
+    right: 20px;
+
+    z-index: 10;
+
+    padding: 10px;
+
+    box-shadow: 5px 5px 4px #0006;
+
+    img {
+        width: 100%;
+        height: 100%;
+    }
+}

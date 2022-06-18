@@ -1,0 +1,6 @@
+{
+	"appId": "io.ionic.starter",
+	"appName": "mappin",
+	"webDir": "www",
+	"bundledWebRuntime": false
+}
