@@ -30,4 +30,8 @@ export class PinsPage implements OnInit {
       }
     ];
   }
+
+  onClick() {
+    console.log('clicked');
+  }
 }
