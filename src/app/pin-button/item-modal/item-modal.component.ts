@@ -6,20 +6,19 @@ import { Component, Inject, OnInit } from '@angular/core';
   styleUrls: ['./item-modal.component.scss'],
 })
 export class ItemModalComponent implements OnInit {
-  items = [];
   modal: any;
   category;
 
   constructor() { }
 
   ngOnInit() {
-    this.items = this.category.items;
+   
   }
 
-  selectItem(id: string) {
-   // let item = this.items.find(i => i.id === id)
+  selectItem(category, item) {
    this.modal.dismiss({
-      item: id
+    category,
+    item
    })
   }
 

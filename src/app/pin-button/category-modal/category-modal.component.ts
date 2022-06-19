@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {  ModalController } from '@ionic/angular';
 
-import * as Categories from '../categories';
+import { Category } from '../../category/categories';
 import { ItemModalComponent } from '../item-modal/item-modal.component';
 
 @Component({
@@ -10,15 +10,13 @@ import { ItemModalComponent } from '../item-modal/item-modal.component';
   styleUrls: ['./category-modal.component.scss'],
 })
 export class CategoryModalComponent implements OnInit {
-  categories = [];
+  categories = Category.getAll();
   modal: any;
 
   constructor(private modalController: ModalController) {
-    
   }
 
   ngOnInit() {
-    this.categories = Categories.getCategories();
   }
 
   async showItemModal(category) {
@@ -31,7 +29,6 @@ export class CategoryModalComponent implements OnInit {
     });
 
     this.modal.style["display"] = "none";
-
     modal.onDidDismiss().then((event) => {
       if (event.data) {
         this.modal.dismiss(event.data);
@@ -39,17 +36,14 @@ export class CategoryModalComponent implements OnInit {
       }
 
       this.modal.style["display"] = "block";
-
     });
 
     await modal.present();
-
     return 
   }
 
-  selectCategory(id: string) {
-    let category = Categories.getCategories().find(c => c.id === id)
-
+  selectCategory(category: Category) {
+   
     this.showItemModal(category);
   }
 
