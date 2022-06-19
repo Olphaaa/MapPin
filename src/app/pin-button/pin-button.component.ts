@@ -6,6 +6,7 @@ import { MapComponent } from '../map/map.component';
 import { CategoryModalComponent } from './category-modal/category-modal.component';
 
 import * as L from 'leaflet';
+import { Icon } from '../category/icons';
 
 @Component({
   selector: 'app-pin-button',
@@ -27,9 +28,17 @@ export class PinButtonComponent implements OnInit {
     modal.onDidDismiss().then((event) => {
       if (!event.data) return;
 
-      let marker = L.marker([ 45.7626843, 3.0960833 ], { icon: MapComponent.icons.FAVICON });
-  
+      let item = event.data.item;
+      let category = event.data.category;
+
+      let icon = Icon.getIcon(item);
+
+      let location = this.manager.gps.getLocation();
+
+      let marker = L.marker([ location.lat + (-0.5 + Math.random()), location.lng + (-0.5 + Math.random())], { icon });
+
       marker.addTo( this.manager.map);
+     
     });
     
     return await modal.present();
