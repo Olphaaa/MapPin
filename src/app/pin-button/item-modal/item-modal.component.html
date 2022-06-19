@@ -1,0 +1,16 @@
+<div id="pin-modal">
+  <div class="title">
+      Ajouter un {{category.name}}
+  </div>
+  <div class="item-container">
+    <div class="item" *ngFor="let item of items">
+      <div class="image" (click)="selectItem(item.id)">
+        <img src="{{item.image}}"/>
+      </div>
+      <div class="name">
+        {{item.name}}
+      </div>
+      
+    </div>
+  </div>
+</div>

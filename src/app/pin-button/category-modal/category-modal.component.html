@@ -4,7 +4,7 @@
   </div>
   <div class="category-container">
     <div class="category" *ngFor="let category of categories">
-      <div class="image">
+      <div class="image" (click)="selectCategory(category.id)">
         <img src="{{category.image}}"/>
       </div>
       <div class="name">

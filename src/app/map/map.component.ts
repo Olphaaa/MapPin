@@ -1,6 +1,7 @@
-import { Component, OnInit, AfterViewInit, OnDestroy, AfterViewChecked } from '@angular/core';
+import { Component, OnInit, AfterViewInit, OnDestroy, AfterViewChecked, Inject } from '@angular/core';
 
 import * as L from 'leaflet';
+import { Manager } from '../manager/manager';
 
 @Component({
   selector: 'app-map',
@@ -22,8 +23,8 @@ export class MapComponent implements OnInit, OnDestroy, AfterViewChecked {
   private initMap(): void {
 
     this.map = L.map('map', {
-      center: [ 45.0278762, 3.9420117 ],
-      zoom: 30,
+      center: [ 46.895566, 2.2611308 ],
+      zoom: 5,
       attributionControl: false,
       preferCanvas: true,
       touchZoom: true,
@@ -32,6 +33,8 @@ export class MapComponent implements OnInit, OnDestroy, AfterViewChecked {
 
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(this.map);
   
+    this.manager.map = this.map;
+
     this.loadMarkers();
   
     this.map.on('click', (e) => {
@@ -47,15 +50,19 @@ export class MapComponent implements OnInit, OnDestroy, AfterViewChecked {
     });
 
     this.map.on('zoom', (e) => {
-     
-      
       console.log(e.target.getZoom());
+    });
+
+    this.map.locate({
+      setView: true,
+      zoom: 4
+    
     });
   }
 
   static icons = {
     FAVICON: L.icon({ 
-      iconUrl: 'assets/markers/cepe.png', 
+      iconUrl: 'assets/item/cepe.png', 
       iconSize: [70, 70],
     }),
   };
@@ -71,7 +78,7 @@ export class MapComponent implements OnInit, OnDestroy, AfterViewChecked {
     });
   }
 
-  constructor() { }
+  constructor(@Inject(Manager) private manager) { }
 
   ngOnInit() {
     this.initMap();
