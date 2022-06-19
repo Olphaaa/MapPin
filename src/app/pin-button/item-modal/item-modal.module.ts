@@ -1,18 +1,18 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { PinModalComponent } from './pin-modal.component';
+import { ItemModalComponent } from './item-modal.component';
 
 
 
 @NgModule({
   declarations: [
-    PinModalComponent
+    ItemModalComponent
   ],
   imports: [
     CommonModule
   ],
   exports: [
-    PinModalComponent
+    ItemModalComponent
   ]
 })
-export class PinModalModule { }
+export class ItemModalModule { }

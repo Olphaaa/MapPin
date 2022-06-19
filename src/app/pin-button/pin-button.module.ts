@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { PinButtonComponent } from './pin-button.component';
-import { PinModalModule } from './pin-modal/pin-modal.module';
+import { CategoryModalModule } from './category-modal/category-modal.module';
 
 
 
@@ -11,7 +11,7 @@ import { PinModalModule } from './pin-modal/pin-modal.module';
   ],
   imports: [
     CommonModule,
-    PinModalModule
+    CategoryModalModule
   ],
   exports: [
     PinButtonComponent

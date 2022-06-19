@@ -11,18 +11,23 @@
         font-weight: bold;
         text-align: center;
 
-        color: black;
+        color: #1F2631;
+
+        font-family: 'Salsa Regular';
     }
 
     .category-container {
-        margin-top: 25px;
+        margin-top: 15px;
 
         display: flex;
+        
         flex-direction: row;
         flex-wrap: wrap;
         justify-content: space-around;
 
         .category {
+            flex: 1 0 33%; 
+            
             margin-top: 15px;
 
             display: flex;
@@ -52,10 +57,12 @@
             .name {
                 margin-top: 8px;
 
-                font-size: 1em;
+                font-size: 1.2em;
                 text-align: center;
 
-                color: black;
+                color: #1F2631;
+
+                font-family: 'SairaCondensed Regular';
             }
         }
     }

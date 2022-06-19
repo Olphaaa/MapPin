@@ -1,19 +1,19 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
 
-import { PinModalComponent } from './pin-modal.component';
+import { ItemModalComponent } from './item-modal.component';
 
-describe('PinModalComponent', () => {
-  let component: PinModalComponent;
-  let fixture: ComponentFixture<PinModalComponent>;
+describe('ItemModalComponent', () => {
+  let component: ItemModalComponent;
+  let fixture: ComponentFixture<ItemModalComponent>;
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ PinModalComponent ],
+      declarations: [ ItemModalComponent ],
       imports: [IonicModule.forRoot()]
     }).compileComponents();
 
-    fixture = TestBed.createComponent(PinModalComponent);
+    fixture = TestBed.createComponent(ItemModalComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   }));
