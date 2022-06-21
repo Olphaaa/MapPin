@@ -6,7 +6,7 @@ import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-import { PinButtonModule } from './pin-button/pin-button.module';
+import { PinButtonModule } from './components/pin-button/pin-button.module';
 
 @NgModule({
   declarations: [AppComponent],

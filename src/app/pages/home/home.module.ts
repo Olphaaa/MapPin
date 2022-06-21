@@ -6,9 +6,9 @@ import { HomePage } from './home.page';
 
 import { HomePageRoutingModule } from './home-routing.module';
 
-import { MapModule } from '../map/map.module';
-import { PinButtonModule } from '../pin-button/pin-button.module';
-import { MenuButtonModule } from '../menu-button/menu-button.module';
+import { MapModule } from '../../components/map/map.module';
+import { PinButtonModule } from '../../components/pin-button/pin-button.module';
+import { MenuButtonModule } from '../../components/menu-button/menu-button.module';
 
 @NgModule({
   imports: [

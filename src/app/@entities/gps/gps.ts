@@ -6,7 +6,7 @@ import { Location } from './location';
 export class Gps {
     location: Location;
 
-    constructor() { 
+    constructor() {
       this.watch();
     }
 
@@ -26,17 +26,4 @@ export class Gps {
       return this.location;
     }
 
-    /*async getCurrentCoordinate() {
-        if (!Capacitor.isPluginAvailable('Geolocation')) {
-          console.log('Plugin geolocation not available');
-          return;
-        }
-
-        let result = await Geolocation.getCurrentPosition();
-
-        let { latitude, longitude } = result.coords;
-
-      
-        return { latitude, longitude };
-      }*/
 }

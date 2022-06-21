@@ -2,8 +2,8 @@ import { Component, OnInit, AfterViewInit, OnDestroy, AfterViewChecked, Inject }
 import { Platform } from '@ionic/angular';
 
 import * as L from 'leaflet';
-import { Gps } from '../gps/gps';
-import { Manager } from '../manager/manager';
+import { Gps } from '../../@entities/gps/gps';
+import { Manager } from '../../@entities/manager/manager';
 
 @Component({
   selector: 'app-map',
@@ -24,10 +24,10 @@ export class MapComponent implements OnInit, OnDestroy, AfterViewChecked {
     });
 
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(this.map);
-  
+
     this.manager.map = this.map;
   }
-   
+
   constructor(
       public platform: Platform,
       @Inject(Manager) private manager
@@ -37,7 +37,7 @@ export class MapComponent implements OnInit, OnDestroy, AfterViewChecked {
     if(this.platform.is('android')) {
       this.manager.gps.requestPermissions();
     }
-    
+
     this.initMap();
   }
 

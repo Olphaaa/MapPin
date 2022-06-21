@@ -10,7 +10,7 @@ export class Category {
         this.id = id;
         this.name = name;
         this.icon = icon;
-        this.items = items
+        this.items = items;
     }
 
     public static ANIMAL_SAUVAGE   = new Category('6829eb12-6a95-4b81-b41f-a14f829e58b9', 'Animal sauvage', 'assets/category/animal-sauvage.png', Item.getAnimauxSauvages());
@@ -21,13 +21,13 @@ export class Category {
     public static POISSON          = new Category('8cd45b3e-0eec-43a6-9753-be02582b4810', 'Poisson', 'assets/category/poisson.png', Item.getPoissons());
 
     public static getAll() {
-        return [
-            Category.ANIMAL_SAUVAGE,
-            Category.CHAMPIGNON,
-            Category.FRUIT,
-            Category.FRUIT_DE_MER,
-            Category.PETIT_ANIMAL,
-            Category.POISSON
-        ]
+      return [
+        Category.ANIMAL_SAUVAGE,
+        Category.CHAMPIGNON,
+        Category.FRUIT,
+        Category.FRUIT_DE_MER,
+        Category.PETIT_ANIMAL,
+        Category.POISSON
+      ];
     }
 }

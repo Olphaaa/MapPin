@@ -9,4 +9,3 @@ import { Gps } from "../gps/gps";
     private map: L.Map;
     private gps: Gps = new Gps();
   }
-  

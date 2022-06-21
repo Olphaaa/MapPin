@@ -12,14 +12,14 @@ export class ItemModalComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-   
+
   }
 
   selectItem(category, item) {
    this.modal.dismiss({
     category,
     item
-   })
+   });
   }
 
 }

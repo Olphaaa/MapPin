@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {  ModalController } from '@ionic/angular';
 
-import { Category } from '../../category/categories';
+import { Category } from '../../../@entities/category/categories';
 import { ItemModalComponent } from '../item-modal/item-modal.component';
 
 @Component({
@@ -23,7 +23,7 @@ export class CategoryModalComponent implements OnInit {
     const modal = await this.modalController.create({
       component: ItemModalComponent,
       cssClass: 'custom-modal',
-      componentProps: { 
+      componentProps: {
         category
       }
     });
@@ -39,11 +39,11 @@ export class CategoryModalComponent implements OnInit {
     });
 
     await modal.present();
-    return 
+    return
   }
 
   selectCategory(category: Category) {
-   
+
     this.showItemModal(category);
   }
 
