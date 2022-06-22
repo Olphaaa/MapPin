@@ -21,10 +21,9 @@ export class HomePage implements OnInit {
     this.httpServicePins.getPins().subscribe(
       (data: any) => {
         this.pins = data;
-        console.log(data);
       },
       (error: any) => {
-        console.log(error);
+        console.error(error);
       }
     );
   }

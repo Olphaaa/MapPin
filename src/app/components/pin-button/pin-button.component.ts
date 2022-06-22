@@ -1,6 +1,6 @@
 import { Component, Inject, OnInit, } from '@angular/core';
 
-import {  ModalController } from '@ionic/angular';
+import {ModalController, ToastController} from '@ionic/angular';
 import { Manager } from '../../@entities/manager/manager';
 import { MapComponent } from '../map/map.component';
 import { CategoryModalComponent } from './category-modal/category-modal.component';
@@ -20,9 +20,11 @@ import {Location} from '../../@entities/gps/location';
 export class PinButtonComponent implements OnInit {
 
   constructor(private modalController: ModalController, @Inject(Manager) private manager,
-              private httpServicePins: HttpServicePinsService) {}
+              private httpServicePins: HttpServicePinsService, public toastController: ToastController) {
+  }
 
-  ngOnInit() {
+
+  async ngOnInit() {
     this.showAllMarkers();
   }
 
@@ -39,22 +41,24 @@ export class PinButtonComponent implements OnInit {
 
       const latitude = location.lat;
       const longitude = location.lng;
-      const date: number = Date.now();
+      const date: number = Date.now() / 60;
       const itemUuid = item.id;
       const pinToAdd = {latitude, longitude, date, itemUuid};
 
-      console.log('pinToAdd', pinToAdd);
       if (latitude != null || longitude != null) {
         this.httpServicePins.addPin(pinToAdd).subscribe(
-          (data: Pin) => {
-            console.log('add', data);
+          () => {
+            this.showAllMarkers();
           },
-          (error: any) => {
-            console.log('add', error);
+          async (error: any) => {
+            const toast = await this.toastController.create({
+              message: error.message,
+              duration: 3000
+            });
+            await toast.present();
+            console.error('add', error);
           });
       }
-      this.showAllMarkers();
-
     });
     return await modal.present();
   }
@@ -69,7 +73,7 @@ export class PinButtonComponent implements OnInit {
         }
       },
       (error: any) => {
-        console.log(error);
+        console.error(error);
       }
     );
   }

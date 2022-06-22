@@ -47,69 +47,69 @@ export class Item {
     public static TRUITE           = new Item('82f86192-b6bb-4dad-8043-4f70135b816f', 'Truite', 'assets/item/truite.png');
 
     public static getAnimauxSauvages(): Item[] {
-        return [
-            Item.BLAIREAU,
-            Item.CHEVREUIL,
-            Item.LOUP,
-            Item.OURS,
-            Item.RENARD,
-            Item.SANGLIER
-        ]
+      return [
+        Item.BLAIREAU,
+        Item.CHEVREUIL,
+        Item.LOUP,
+        Item.OURS,
+        Item.RENARD,
+        Item.SANGLIER
+      ];
     }
 
     public static getChampignons(): Item[] {
-        return [
-            Item.CEPE,
-            Item.GIROLLE,
-            Item.LACTAIRE,
-            Item.MORILLE,
-            Item.ROSE_DES_PRES,
-            Item.TRUFFE
-        ]
+      return [
+        Item.CEPE,
+        Item.GIROLLE,
+        Item.LACTAIRE,
+        Item.MORILLE,
+        Item.ROSE_DES_PRES,
+        Item.TRUFFE
+      ];
     }
 
     public static getFruits(): Item[] {
-        return [
-            Item.CERISE,
-            Item.FRAISE,
-            Item.FRAMBOISE,
-            Item.MURE,
-            Item.POIRE,
-            Item.POMME,
-        ]
+      return [
+        Item.CERISE,
+        Item.FRAISE,
+        Item.FRAMBOISE,
+        Item.MURE,
+        Item.POIRE,
+        Item.POMME,
+      ];
     }
 
     public static getFruitsDeMer(): Item[] {
-        return [
-            Item.CRABE,
-            Item.CREVETTE,
-            Item.ECREVISSE,
-            Item.HOMAR,
-            Item.MOULE,
-            Item.POULPE,
-        ]
+      return [
+        Item.CRABE,
+        Item.CREVETTE,
+        Item.ECREVISSE,
+        Item.HOMAR,
+        Item.MOULE,
+        Item.POULPE,
+      ];
     }
 
     public static getPetitsAnimaux(): Item[] {
-        return [
-            Item.CANARD,
-            Item.ECUREUIL,
-            Item.ESCARGOT,
-            Item.GRENOUILLE,
-            Item.HERISSON,
-            Item.LAPIN
-        ]
+      return [
+        Item.CANARD,
+        Item.ECUREUIL,
+        Item.ESCARGOT,
+        Item.GRENOUILLE,
+        Item.HERISSON,
+        Item.LAPIN
+      ];
     }
 
     public static getPoissons(): Item[] {
-        return [
-            this.ANCHOIS,
-            this.BROCHET,
-            this.DAURADE,
-            this.MAQUEREAU,
-            this.THON,
-            this.TRUITE
-        ]
+      return [
+        this.ANCHOIS,
+        this.BROCHET,
+        this.DAURADE,
+        this.MAQUEREAU,
+        this.THON,
+        this.TRUITE
+      ];
     }
 
   public static getAll() {
