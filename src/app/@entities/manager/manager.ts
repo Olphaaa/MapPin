@@ -1,6 +1,6 @@
-import { Injectable } from "@angular/core";
+import { Injectable } from '@angular/core';
 import * as L from 'leaflet';
-import { Gps } from "../gps/gps";
+import { Gps } from '../gps/gps';
 
 @Injectable({
     providedIn: 'root',

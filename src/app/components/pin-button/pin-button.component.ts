@@ -7,6 +7,10 @@ import { CategoryModalComponent } from './category-modal/category-modal.componen
 
 import * as L from 'leaflet';
 import { Icon } from '../../@entities/category/icons';
+import {HttpServicePinsService} from '../../services/pinService/http-service-pins.service';
+import {Pin} from '../../@entities/pin/pin';
+import {Item} from '../../@entities/category/items';
+import {Location} from '../../@entities/gps/location';
 
 @Component({
   selector: 'app-pin-button',
@@ -15,8 +19,11 @@ import { Icon } from '../../@entities/category/icons';
 })
 export class PinButtonComponent implements OnInit {
 
-  constructor(private modalController: ModalController, @Inject(Manager) private manager) {
+  constructor(private modalController: ModalController, @Inject(Manager) private manager,
+              private httpServicePins: HttpServicePinsService) {}
 
+  ngOnInit() {
+    this.showAllMarkers();
   }
 
   async showModal() {
@@ -26,24 +33,44 @@ export class PinButtonComponent implements OnInit {
     });
 
     modal.onDidDismiss().then((event) => {
-      if (!event.data) return;
+      if (!event.data) {return;}
+      const item = event.data.item;
+      const location: Location = this.manager.gps.getLocation();
 
-      let item = event.data.item;
-      let category = event.data.category;
+      const latitude = location.lat;
+      const longitude = location.lng;
+      const date: number = Date.now();
+      const itemUuid = item.id;
+      const pinToAdd = {latitude, longitude, date, itemUuid};
 
-      let icon = Icon.getIcon(item);
-
-      let location = this.manager.gps.getLocation();
-
-      let marker = L.marker([ location.lat + (-0.5 + Math.random()), location.lng + (-0.5 + Math.random())], { icon });
-
-      marker.addTo( this.manager.map);
+      console.log('pinToAdd', pinToAdd);
+      if (latitude != null || longitude != null) {
+        this.httpServicePins.addPin(pinToAdd).subscribe(
+          (data: Pin) => {
+            console.log('add', data);
+          },
+          (error: any) => {
+            console.log('add', error);
+          });
+      }
+      this.showAllMarkers();
 
     });
-
     return await modal.present();
   }
 
-  ngOnInit() {}
-
+  private showAllMarkers() {
+    this.httpServicePins.getPins().subscribe(
+      (data: Pin[]) => {
+        for (const d of data) {
+          const icon = Icon.getIcon(Item.getItemById(d.itemUuid));
+          const truc = L.marker([d.latitude, d.longitude], {icon});
+          truc.addTo(this.manager.map);
+        }
+      },
+      (error: any) => {
+        console.log(error);
+      }
+    );
+  }
 }

@@ -89,7 +89,7 @@ export class Item {
             Item.POULPE,
         ]
     }
-          
+
     public static getPetitsAnimaux(): Item[] {
         return [
             Item.CANARD,
@@ -112,4 +112,18 @@ export class Item {
         ]
     }
 
+  public static getAll() {
+    return [
+      ...this.getAnimauxSauvages(),
+      ...this.getChampignons(),
+      ...this.getFruits(),
+      ...this.getFruitsDeMer(),
+      ...this.getPetitsAnimaux(),
+      ...this.getPoissons()
+    ];
+  }
+
+  public static getItemById(id: string) {
+    return this.getAll().find(item => item.id === id);
+  }
 }

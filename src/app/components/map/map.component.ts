@@ -13,6 +13,28 @@ import { Manager } from '../../@entities/manager/manager';
 export class MapComponent implements OnInit, OnDestroy, AfterViewChecked {
   private map;
 
+  constructor(
+    public platform: Platform,
+    @Inject(Manager) private manager
+  ) { }
+
+  ngOnInit() {
+    if(this.platform.is('android')) {
+      this.manager.gps.requestPermissions();
+    }
+
+    this.initMap();
+  }
+
+  ngOnDestroy() {
+    this.map.remove();
+  }
+
+  ngAfterViewChecked(): void {
+    this.map.invalidateSize(true);
+  }
+
+
   private initMap(): void {
     this.map = L.map('map', {
       center: [ 46.895566, 2.2611308 ],
@@ -26,28 +48,6 @@ export class MapComponent implements OnInit, OnDestroy, AfterViewChecked {
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(this.map);
 
     this.manager.map = this.map;
-  }
-
-  constructor(
-      public platform: Platform,
-      @Inject(Manager) private manager
-    ) { }
-
-  ngOnInit() {
-    if(this.platform.is('android')) {
-      this.manager.gps.requestPermissions();
-    }
-
-    this.initMap();
-  }
-
-
-  ngOnDestroy() {
-    this.map.remove();
-  }
-
-  ngAfterViewChecked(): void {
-    this.map.invalidateSize(true);
   }
 
 }
