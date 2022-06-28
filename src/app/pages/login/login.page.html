@@ -1,0 +1,36 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Log In</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="container">
+  <ion-item class="ctn"  lines="none">
+    <div class="truc ion-justify-content-center ion-align-self-center">
+      <ion-img class="img" [src]="'assets/mappin.svg'"></ion-img>
+      <ion-label class="label" style="width: 150px">MapPin</ion-label>
+    </div>
+  </ion-item>
+  <form [formGroup]="formGroup" (ngSubmit)="logForm()">
+    <ion-item class="email">
+      <ion-label position="floating" >Email</ion-label>
+      <ion-input type="text" name="email" formControlName="email"></ion-input>
+    </ion-item>
+    <ion-item lines="full">
+      <ion-label position="floating">Password</ion-label>
+      <ion-input type="password" formControlName="password"></ion-input>
+    </ion-item>
+    <ion-row>
+      <ion-col>
+        <ion-button type="submit" expand="block">Sign In</ion-button>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-button (click)="onSignUp()">Sign Up</ion-button>
+      </ion-col>
+    </ion-row>
+  </form>
+</ion-content>

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {Router, RouterLink} from '@angular/router';
+import {Router} from '@angular/router';
+import {StorageService, StorageType} from '../../services/storage/storage.service';
 
 @Component({
   selector: 'app-menu-button',
@@ -8,13 +9,24 @@ import {Router, RouterLink} from '@angular/router';
 })
 export class MenuButtonComponent implements OnInit {
 
-  constructor(private router: Router) { }
+  isUserConnected: boolean;
 
-  ngOnInit() {}
+  constructor(private router: Router, private storageService: StorageService) { }
+
+  ngOnInit() {
+    this.checkUserConnected();
+  }
 
 
-  login() {
-    console.log('login');
-    this.router.navigate(['./login']);
+  onClick() {
+    if (this.checkUserConnected()) {
+      this.router.navigate(['/user']);
+    }
+    this.router.navigate(['/login']);
+  }
+
+  private checkUserConnected(): boolean {
+    this.isUserConnected = this.storageService.getStorageItem(StorageType.TOKEN) !== null;
+    return this.isUserConnected;
   }
 }
