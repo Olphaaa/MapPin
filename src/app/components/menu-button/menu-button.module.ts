@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MenuButtonComponent } from './menu-button.component';
+import {IonicModule} from '@ionic/angular';
+
 
 
 
@@ -8,9 +10,10 @@ import { MenuButtonComponent } from './menu-button.component';
   declarations: [
     MenuButtonComponent,
   ],
-  imports: [
-    CommonModule
-  ],
+    imports: [
+        CommonModule,
+        IonicModule
+    ],
   exports: [
     MenuButtonComponent
   ]
