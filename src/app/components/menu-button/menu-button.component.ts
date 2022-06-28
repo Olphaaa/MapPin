@@ -17,10 +17,10 @@ export class MenuButtonComponent implements OnInit {
     this.checkUserConnected();
   }
 
-
   onClick() {
     if (this.checkUserConnected()) {
       this.router.navigate(['/user']);
+      return;
     }
     this.router.navigate(['/login']);
   }

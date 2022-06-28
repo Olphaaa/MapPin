@@ -31,5 +31,12 @@ export class LoginService {
     return this.httpClient.post(this.baseUrl + '/register', user);
   }
 
-
+  /**
+   * Get the user infos from the token
+   *
+   * @param token token to get the user infos
+   */
+  getUserInfos(token: string) {
+    return this.httpClient.get(this.baseUrl + '/user/' + token);
+  }
 }
