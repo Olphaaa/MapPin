@@ -1,5 +1,6 @@
-import {Injectable, OnInit} from '@angular/core';
+import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {StorageService, StorageType} from '../storage/storage.service';
 
 @Injectable({
   providedIn: 'root'
@@ -11,21 +12,23 @@ export class HttpServicePinsService {
   private baseUrl = 'https://api.mappin.sunei.fr/pin';
   private secondes = 10;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private storageService: StorageService) {}
 
   getPins() {
+    const token = this.storageService.getStorageItem(StorageType.TOKEN);
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
-      'Authorization': `Bearer ${this.authToken}`
+      'Authorization': `Bearer ${token}`
     });
     return this.http.get(this.baseUrl, { headers });
   }
 
 
   addPin(pin: any) {
+    const token = this.storageService.getStorageItem(StorageType.TOKEN);
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
-      'Authorization': `Bearer ${this.authToken}`
+      'Authorization': `Bearer ${token}`
     });
     return this.http.post(this.baseUrl, pin, { headers });
   }

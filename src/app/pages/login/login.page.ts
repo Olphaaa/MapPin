@@ -3,6 +3,7 @@ import {Router} from '@angular/router';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {LoginService} from '../../services/login/login.service';
 import {StorageService, StorageType} from '../../services/storage/storage.service';
+import {ToastController} from "@ionic/angular";
 
 @Component({
   selector: 'app-login',
@@ -14,7 +15,7 @@ export class LoginPage implements OnInit {
   formGroup: FormGroup;
 
   constructor(private router: Router, private formBuilder: FormBuilder,
-              private loginService: LoginService, private storageService: StorageService) {
+              private loginService: LoginService, private storageService: StorageService, public toastController: ToastController) {
     this.formGroup = this.formBuilder.group({
       email: ['', Validators.required],
       password: ['']
@@ -33,7 +34,12 @@ export class LoginPage implements OnInit {
         this.storageService.setStorageItem(StorageType.TOKEN, data.token);
         this.router.navigate(['/home']);
       },
-      (error) => {
+      async (error) => {
+        const toast = await this.toastController.create({
+          message: error.message,
+          duration: 3000
+        });
+        await toast.present();
         console.log('error', error);
       });
   }

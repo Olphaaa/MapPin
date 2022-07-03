@@ -28,18 +28,18 @@ export class CategoryModalComponent implements OnInit {
       }
     });
 
-    this.modal.style["display"] = "none";
+    this.modal.style.display = 'none';
     modal.onDidDismiss().then((event) => {
       if (event.data) {
         this.modal.dismiss(event.data);
         return;
       }
 
-      this.modal.style["display"] = "block";
+      this.modal.style.display = 'block';
     });
 
     await modal.present();
-    return
+    return;
   }
 
   selectCategory(category: Category) {

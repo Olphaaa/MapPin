@@ -1,16 +1,16 @@
-import { Component, Inject, OnInit, } from '@angular/core';
+import {Component, Inject, OnInit,} from '@angular/core';
 
 import {ModalController, ToastController} from '@ionic/angular';
-import { Manager } from '../../@entities/manager/manager';
-import { MapComponent } from '../map/map.component';
-import { CategoryModalComponent } from './category-modal/category-modal.component';
+import {Manager} from '../../@entities/manager/manager';
+import {CategoryModalComponent} from './category-modal/category-modal.component';
 
 import * as L from 'leaflet';
-import { Icon } from '../../@entities/category/icons';
+import {Icon} from '../../@entities/category/icons';
 import {HttpServicePinsService} from '../../services/pinService/http-service-pins.service';
 import {Pin} from '../../@entities/pin/pin';
 import {Item} from '../../@entities/category/items';
 import {Location} from '../../@entities/gps/location';
+import {StorageService, StorageType} from '../../services/storage/storage.service';
 
 @Component({
   selector: 'app-pin-button',
@@ -72,7 +72,12 @@ export class PinButtonComponent implements OnInit {
           truc.addTo(this.manager.map);
         }
       },
-      (error: any) => {
+      async (error: any) => {
+        const toast = await this.toastController.create({
+          message: error.message,
+          duration: 3000
+        });
+        await toast.present();
         console.error(error);
       }
     );

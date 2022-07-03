@@ -3,6 +3,7 @@ import {StorageService, StorageType} from '../../services/storage/storage.servic
 import {User} from '../../@entities/user/user';
 import {LoginService} from '../../services/login/login.service';
 import {Router} from '@angular/router';
+import {ToastController} from '@ionic/angular';
 
 @Component({
   selector: 'app-user',
@@ -14,11 +15,10 @@ export class UserPage implements OnInit {
   connectedUser: User;
 
   constructor(private storageService: StorageService, private loginService: LoginService,
-              private router: Router) { }
+              private router: Router, public toastController: ToastController) { }
 
   ngOnInit() {
-    this.connectedUser = {email: 'olivier.blanc2000@gmail.com', token: 'token'};
-    // this.getUserConnected();
+    this.getUserConnected();
   }
 
   onLogOut() {
@@ -32,8 +32,13 @@ export class UserPage implements OnInit {
       (user: User) => {
         this.connectedUser = user;
       },
-      (error) => {
+      async (error) => {
         console.log(error);
+        const toast = await this.toastController.create({
+          message: error.message,
+          duration: 3000
+        });
+        await toast.present();
       });
   }
 }

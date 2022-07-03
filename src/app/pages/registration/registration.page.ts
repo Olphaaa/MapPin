@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
 import {LoginService} from '../../services/login/login.service';
+import {ToastController} from "@ionic/angular";
 
 @Component({
   selector: 'app-registration',
@@ -12,7 +13,7 @@ export class RegistrationPage implements OnInit {
 
   formGroup: FormGroup;
 
-  constructor(private formBuilder: FormBuilder, private router: Router, private loginService: LoginService) {
+  constructor(private formBuilder: FormBuilder, private router: Router, private loginService: LoginService, public toastController: ToastController) {
     this.formGroup = this.formBuilder.group({
       email: ['', Validators.required],
       password: [''],
@@ -33,12 +34,22 @@ export class RegistrationPage implements OnInit {
           () => {
             this.router.navigate(['/login']);
           },
-          (error) => {
+          async (error) => {
+            const toast = await this.toastController.create({
+              message: error.message,
+              duration: 3000
+            });
+            await toast.present();
             console.log('error', error);
           }
         );
       },
-      (error) => {
+      async (error) => {
+        const toast = await this.toastController.create({
+          message: error.message,
+          duration: 3000
+        });
+        await toast.present();
         console.log('error', error);
       });
   }
