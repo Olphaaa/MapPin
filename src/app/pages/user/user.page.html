@@ -8,9 +8,8 @@
 </ion-header>
 
 <ion-content>
-  <ion-item class="ctn"  lines="none">
-    <h2>You are connected as: {{ connectedUser.email }}</h2>
-  </ion-item>
+  <app-mappin-icon></app-mappin-icon>
+  <h4>You are connected as: {{ connectedUser.email }}</h4>
   <ion-row>
     <ion-col>
       <ion-button class="danger" (click)="onLogOut()">Log Out</ion-button>

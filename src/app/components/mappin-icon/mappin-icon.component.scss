@@ -1,0 +1,28 @@
+.content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .center {
+    justify-content: center;
+    align-self: center;
+  }
+
+  .logo {
+    width: 5rem;
+    justify-content: center;
+  }
+
+  .title {
+    font-size: 4rem;
+    font-weight: bold;
+    color: #2B8E49;
+    font-family: 'Salsa Regular', serif;
+    justify-content: center;
+  }
+
+}
+
+.truc {
+  justify-content: center;
+}

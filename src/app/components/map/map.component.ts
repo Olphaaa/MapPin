@@ -1,8 +1,7 @@
-import { Component, OnInit, AfterViewInit, OnDestroy, AfterViewChecked, Inject } from '@angular/core';
+import { Component, OnInit, OnDestroy, AfterViewChecked, Inject } from '@angular/core';
 import { Platform } from '@ionic/angular';
 
 import * as L from 'leaflet';
-import { Gps } from '../../@entities/gps/gps';
 import { Manager } from '../../@entities/manager/manager';
 
 @Component({
@@ -11,7 +10,7 @@ import { Manager } from '../../@entities/manager/manager';
   styleUrls: ['./map.component.scss'],
 })
 export class MapComponent implements OnInit, OnDestroy, AfterViewChecked {
-  private map;
+  map;
 
   constructor(
     public platform: Platform,

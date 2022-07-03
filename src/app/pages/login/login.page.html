@@ -7,12 +7,7 @@
   </ion-toolbar>
 </ion-header>
 <ion-content class="container">
-  <ion-item class="ctn"  lines="none">
-    <div class="truc ion-justify-content-center ion-align-self-center">
-      <ion-img class="img" [src]="'assets/mappin.svg'"></ion-img>
-      <ion-label class="label" style="width: 150px">MapPin</ion-label>
-    </div>
-  </ion-item>
+  <app-mappin-icon></app-mappin-icon>
   <form [formGroup]="formGroup" (ngSubmit)="logForm()">
     <ion-item class="email">
       <ion-label position="floating" >Email</ion-label>
