@@ -18,7 +18,7 @@ export class UserPage implements OnInit {
               private router: Router, public toastController: ToastController) { }
 
   ngOnInit() {
-    this.getUserConnected();
+    // this.getUserConnected();
   }
 
   onLogOut() {
